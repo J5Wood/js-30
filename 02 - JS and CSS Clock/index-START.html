@@ -12,9 +12,12 @@
         <div class="hand hour-hand"></div>
         <div class="hand min-hand"></div>
         <div class="hand second-hand"></div>
+        <div class="hand timer-hand"></div>
       </div>
     </div>
-
+    <label for="timer">Timer</label>
+    <input class="timer" name="timer" type="number">
+    <input class="timer-button" type="submit" value="Set Timer">
 
   <style>
     html {
@@ -66,6 +69,11 @@
       transition: all 0.05s;
       transition-timing-function: cubic-bezier(0.23, 2.96, 0.58, 1);
     }
+
+    .timer-hand {
+      background:red;
+      display: none;
+    }
   </style>
 
   <script>
@@ -94,6 +102,43 @@
     }
 
     setInterval(setDate, 1000)
+
+    const timer = document.querySelector('.timer')
+    const timerButton = document.querySelector('.timer-button')
+    const timerHand = document.querySelector('.timer-hand')
+
+    function setTimer(){
+      const now = new Date();
+      let minutes = now.getMinutes();
+      let hours = now.getHours();
+      if(hours > 12) hours = hours - 12;
+
+      const time = timer.value;
+      let addMins = time % 60;
+      let addHrs = Math.floor(time / 60)
+      minutes += addMins
+      if(minutes > 59){
+        addHrs += minutes / 60;
+        minutes = minutes % 60;
+      }
+
+
+      hours += addHrs
+      if(hours > 12) {
+        hours = hours % 12;
+      }
+      
+
+      const minutesDegrees = ((minutes / 60) * 360) + 90;
+      // const hoursDegrees = (((hours * 5) / 60) * 360) + 90;
+
+      timerHand.style.transform = `rotate(${minutesDegrees}deg)`;
+      timerHand.style.display = "block"
+      console.log(now)
+
+    }
+
+    timerButton.addEventListener("click", setTimer)
 
   </script>
 </body>
