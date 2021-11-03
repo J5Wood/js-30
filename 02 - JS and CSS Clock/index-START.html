@@ -5,7 +5,14 @@
   <title>JS + CSS Clock</title>
 </head>
 <body>
-
+  <div class="arrow">
+    <div class="arrow-hand forty-deg"></div>
+    <div class="arrow-hand three-twenty-deg"></div>
+  </div>
+  <div class="arrow">
+    <div class="arrow-hand three-twenty-deg"></div>
+    <div class="arrow-hand forty-deg"></div>
+  </div>
 
     <div class="clock">
       <div class="clock-face">
@@ -20,8 +27,47 @@
     <input class="timer-button" type="submit" value="Set Timer">
 
   <style>
+
+    .arrow {
+      left: 85px;
+      flex: 1;
+      position: absolute;
+      display: flex;
+      flex-flow: column nowrap;
+      width: 9rem;
+      height: 11rem;
+      background-color: #FFFFFF;
+      justify-content: center;
+      box-shadow:
+        0 0 0 4px rgba(0,0,0,0.1),
+        inset 0 0 0 3px #EFEFEF,
+        inset 0 0 10px black,
+        0 0 10px rgba(0,0,0,0.2);
+    }
+
+    .arrow-hand {
+      left: 50%;
+      position: relative;
+      flex: 1;
+      width: 15%;
+      max-height: 60%;
+      margin: -18%;
+      border:black solid 4px;
+      border-radius: 20px;
+      background: #000000;
+    }
+
+    .forty-deg {
+      transform: rotate(40deg);
+    }
+
+    .three-twenty-deg {
+      transform: rotate(320deg);
+    }
+
+
     html {
-      background: #018DED url(https://unsplash.it/1500/1000?image=881&blur=5);
+      /* background: #018DED url(https://unsplash.it/1500/1000?image=881&blur=5); */
       background-size: cover;
       font-family: 'helvetica neue';
       text-align: center;
@@ -38,6 +84,8 @@
     }
 
     .clock {
+      left: 150px;
+
       width: 30rem;
       height: 30rem;
       border: 20px solid white;
