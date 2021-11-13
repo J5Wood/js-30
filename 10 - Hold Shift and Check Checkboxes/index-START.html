@@ -96,6 +96,49 @@
   </div>
 
 <script>
+
+let checkboxes = [...document.getElementsByTagName("input")]
+
+checkboxes.forEach((box, i) => {
+  box.addEventListener('click', (e) => checkSelect(e, i))
+})
+
+function checkSelect(e, i) {
+  if(e.shiftKey){
+    selectBoxes(e.target, i)
+  }
+}
+
+function selectBoxes(currentBox, currentIndex) {
+  checkboxes.forEach((box, i) => {
+    if(box.checked){
+      let lowNum = Math.min(i, currentIndex)
+      let highNum = Math.max(i, currentIndex)
+      checkboxes.slice(lowNum, highNum).forEach(b => b.checked = true)
+    }
+  })
+}
+
+// Selects all from bottom if shift is hled down on first press
+
+// let lastChecked
+
+// function handleCheck(e){
+//   let inbetween = false
+//   if(e.shiftKey && this.checked){
+
+//     checkboxes.forEach(checkbox => {
+//       if(checkbox === this || checkbox === lastChecked) inbetween = !inbetween
+//       if(inbetween) checkbox.checked = true
+//     })
+//   }
+
+//   lastChecked = this;
+// }
+
+// checkboxes.forEach(box => {
+//   box.addEventListener('click', handleCheck)
+// })
 </script>
 </body>
 </html>
