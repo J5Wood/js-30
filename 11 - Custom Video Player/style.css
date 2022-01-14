@@ -16,15 +16,30 @@ body {
   background-size: cover;
   align-items: center;
   justify-content: center;
+
+  display:flex;
+  flex-flow: row wrap;
+}
+
+.test {
+  flex: 1;
+  min-width: 640px;
+  max-width: 700px;
+  height: 255.6666px;
+  background-color: #bada55;
 }
 
 .player {
   max-width: 750px;
+  min-width: 500px;
+  height: fit-content;
   border: 5px solid rgba(0,0,0,0.2);
   box-shadow: 0 0 20px rgba(0,0,0,0.2);
   position: relative;
   font-size: 0;
   overflow: hidden;
+
+  flex: 1;
 }
 
 /* This css is only applied when fullscreen is active. */

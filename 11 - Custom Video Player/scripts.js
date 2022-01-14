@@ -66,6 +66,7 @@ function updateProgress() {
 }
 
 function handleProgressEvent(e) {
+    debugger
     const percentage = (e.offsetX / progressBar.offsetWidth).toFixed(2)
     player.currentTime = player.duration * percentage
     updateProgress()
